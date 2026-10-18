@@ -1,0 +1,11 @@
+# Install a CUDA-compatible torch separately on Vast; local uses CPU torch.
+transformers==4.57.6
+huggingface_hub==0.36.2
+tokenizers==0.22.2
+sentencepiece==0.2.2
+soundfile==0.14.0
+pyarrow==26.0.0
+sphn==0.2.1
+tensorboard==2.21.0
+jiwer==4.0.0
+scipy==1.18.1

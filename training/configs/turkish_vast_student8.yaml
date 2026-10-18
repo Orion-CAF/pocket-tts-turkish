@@ -1,0 +1,46 @@
+# Check with `python -m scripts.vast_preflight <this config>` before a long run.
+model_config: pocket_tts/config/english_2026-04_24l.yaml
+start_from_pretrained: false
+distill_cfg_coef: 2.0
+distill_teacher_config: pocket_tts/config/english_2026-04_24l.yaml
+distill_teacher_overrides:
+  flow_lm.lookup_table.tokenizer: sentencepiece
+  flow_lm.lookup_table.tokenizer_path: data/tr/v1/tokenizer.model
+distill_teacher_weights: runs/turkish_vast_teacher/selected_teacher.pt
+data:
+  train_jsonl: data/tr/v1/train_aligned.jsonl
+  valid_jsonl: data/tr/v1/valid_aligned.jsonl
+  max_duration_sec: 10.0
+  max_voice_prompt_sec: 2.0
+  loader_procs: 1
+  num_bucket_batches: 1
+  precompute: false
+flow:
+  type: lsd
+  kwargs: {}
+text_dropout: 0.0
+voice_dropout: 0.0
+optim:
+  lr: 4e-4
+  schedule: cosine
+  warmup_steps: 200
+run_dir: runs/turkish_vast_student8
+batch_size: 8
+grad_accum_steps: 8
+max_steps: 5000
+ema_decay: 0.999
+log_freq: 50
+valid_freq: 250
+ckpt_freq: 250
+num_ckpt_keep: 3
+model_overrides:
+  flow_lm.lookup_table.tokenizer: sentencepiece
+  flow_lm.lookup_table.tokenizer_path: data/tr/v1/tokenizer.model
+  flow_lm.transformer.num_layers: 8
+compile: false
+sample_freq: 250
+num_valid_batches: 20
+sample_sentences:
+- Merhaba, bugün Türkçe konuşmayı öğreniyoruz.
+- İstanbul ile Iğdır arasında uzun bir yol var.
+sample_cfg_coef: 1.0

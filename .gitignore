@@ -1,0 +1,32 @@
+# Large directories
+/runs/
+/data/
+/exports/
+/bundle_parts/
+/transfer_test_parts/
+
+# Model files
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Generated files
+*.wav
+*.mp3
+*.mp4
