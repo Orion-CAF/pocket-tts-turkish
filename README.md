@@ -8,8 +8,11 @@ This is OrionCAF's fork of [Kyutai's Pocket TTS](https://github.com/kyutai-labs/
 
 ## Use the model
 
+Downloads are gated: accept the terms once on the [model page](https://huggingface.co/OrionCAF/pocket-tts-turkish-8l) while logged in, then log in from the terminal.
+
 ```bash
 pip install pocket-tts soundfile
+hf auth login
 pocket-tts generate \
   --config hf://OrionCAF/pocket-tts-turkish-8l/config.yaml \
   --voice voice_sample.wav \
